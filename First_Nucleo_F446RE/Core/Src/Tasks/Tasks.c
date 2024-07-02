@@ -47,6 +47,8 @@ void TaskInit(void)
 	SchedulerInitFct();
 
 	HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adc_buf, ADC_BUF_LEN);
+
+	CanInit();
 }
 
 void TaskFast(void)
@@ -66,7 +68,11 @@ void TaskMed(void)
 void TaskSlow(void)
 {
 	/* TODO functions executed periodically (slow schedulation, e.g. 100 ms). */
-	// TODO: Transmit_CAN_Message
+	uint8_t a[] = {100, 50, 30};
+	uint8_t g[] = {70, 80, 90};
+
+	Transmit_CAN_Message(&hcan1, 0x33, sizeof(a), a);
+	Transmit_CAN_Message(&hcan1, 0x34, sizeof(g), g);
 }
 
 

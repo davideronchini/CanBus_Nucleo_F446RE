@@ -31,7 +31,8 @@ Core/Src/Scheduler/Scheduler.o: ../Core/Src/Scheduler/Scheduler.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nucleo_F446RE/Core/Src/Can/Can.h
 ../Core/Src/Scheduler/Scheduler.h:
 C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nucleo_F446RE/Core/Src/Tasks/Tasks.h:
 C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nucleo_F446RE/Core/Src/Scheduler/Scheduler.h:
@@ -66,3 +67,4 @@ C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nu
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nucleo_F446RE/Core/Src/Can/Can.h:

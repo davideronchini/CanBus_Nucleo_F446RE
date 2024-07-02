@@ -1,6 +1,6 @@
 ../Core/Src/Tasks/Tasks.c:42:6:TaskInit	1
-../Core/Src/Tasks/Tasks.c:52:6:TaskFast	1
-../Core/Src/Tasks/Tasks.c:59:6:TaskMed	1
-../Core/Src/Tasks/Tasks.c:66:6:TaskSlow	1
-../Core/Src/Tasks/Tasks.c:79:6:Task1_AcquireSensorValues	2
-../Core/Src/Tasks/Tasks.c:94:6:Task1_AverageSensorValues	2
+../Core/Src/Tasks/Tasks.c:54:6:TaskFast	1
+../Core/Src/Tasks/Tasks.c:61:6:TaskMed	1
+../Core/Src/Tasks/Tasks.c:68:6:TaskSlow	1
+../Core/Src/Tasks/Tasks.c:85:6:Task1_AcquireSensorValues	2
+../Core/Src/Tasks/Tasks.c:100:6:Task1_AverageSensorValues	2

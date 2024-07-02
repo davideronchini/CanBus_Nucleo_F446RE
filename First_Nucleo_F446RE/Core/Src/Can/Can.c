@@ -24,11 +24,6 @@
  *
  */
 
-Vector a = {0};
-Vector g = {0};
-
-GPIO_PinState led_state = GPIO_PIN_SET;
-
 
 /**
  *
@@ -57,10 +52,10 @@ void Transmit_CAN_Message(CAN_HandleTypeDef *hcan, uint32_t StdId, uint32_t DLC,
 	// Try to add the message to the CAN bus
 	if (HAL_CAN_AddTxMessage(hcan, &TxHeader, TxData, &TxMailbox) == HAL_OK) {
 		// Turn on the built-in LED to indicate successful transmission
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET); // Blue Led
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);; // Green Led
 	} else {
 		// Turn off the built-in LED to indicate an error during transmission
-		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 		Error_Handler(); // Handle error if message transmission fails
 	}
 }

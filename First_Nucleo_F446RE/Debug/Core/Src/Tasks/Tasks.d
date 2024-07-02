@@ -2,6 +2,7 @@ Core/Src/Tasks/Tasks.o: ../Core/Src/Tasks/Tasks.c \
  ../Core/Src/Tasks/Tasks.h \
  C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nucleo_F446RE/Core/Src/Scheduler/Scheduler.h \
  C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nucleo_F446RE/Core/Src/Tasks/Tasks.h \
+ C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nucleo_F446RE/Core/Src/Can/Can.h \
  ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -35,6 +36,7 @@ Core/Src/Tasks/Tasks.o: ../Core/Src/Tasks/Tasks.c \
 ../Core/Src/Tasks/Tasks.h:
 C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nucleo_F446RE/Core/Src/Scheduler/Scheduler.h:
 C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nucleo_F446RE/Core/Src/Tasks/Tasks.h:
+C:/Users/dadol/Documents/School/Formula\ SAE/STM32/CanBus_Nucleo_F446RE/First_Nucleo_F446RE/Core/Src/Can/Can.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:

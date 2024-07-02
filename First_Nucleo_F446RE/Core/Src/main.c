@@ -342,12 +342,12 @@ static void MX_GPIO_Init(void)
 
 // Called when first half of buffer is filled
 void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc) {
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+	//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
 }
 
 // Called when buffer is completed filled
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc) {
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+	//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 }
 /* USER CODE END 4 */
 

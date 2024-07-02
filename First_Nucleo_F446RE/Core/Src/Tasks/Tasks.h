@@ -14,9 +14,6 @@ extern void TaskSlow(void);
 
 void Task1_AcquireSensorValues(void);
 void Task1_AverageSensorValues(void);
-void Task2_ConvertAndSendSensorData(void);
-void Task3_ReadCANMessages(void);
-void Task4_ErrorHandling(void);
 
 #endif /* __TASKS_H */
 
