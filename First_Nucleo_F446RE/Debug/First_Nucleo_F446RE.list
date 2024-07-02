@@ -712,13 +712,13 @@ void TaskSlow(void)
  80006ea:	0c12      	lsrs	r2, r2, #16
  80006ec:	701a      	strb	r2, [r3, #0]
 
-	Transmit_CAN_Message(&hcan1, 0x33, sizeof(a), a);
+	Transmit_CAN_Message(&hcan1, 0x033, sizeof(a), a);
  80006ee:	1d3b      	adds	r3, r7, #4
  80006f0:	2203      	movs	r2, #3
  80006f2:	2133      	movs	r1, #51	@ 0x33
  80006f4:	4808      	ldr	r0, [pc, #32]	@ (8000718 <TaskSlow+0x50>)
  80006f6:	f7ff ff07 	bl	8000508 <Transmit_CAN_Message>
-	Transmit_CAN_Message(&hcan1, 0x34, sizeof(g), g);
+	Transmit_CAN_Message(&hcan1, 0x034, sizeof(g), g);
  80006fa:	463b      	mov	r3, r7
  80006fc:	2203      	movs	r2, #3
  80006fe:	2134      	movs	r1, #52	@ 0x34

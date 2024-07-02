@@ -71,8 +71,8 @@ void TaskSlow(void)
 	uint8_t a[] = {100, 50, 30};
 	uint8_t g[] = {70, 80, 90};
 
-	Transmit_CAN_Message(&hcan1, 0x33, sizeof(a), a);
-	Transmit_CAN_Message(&hcan1, 0x34, sizeof(g), g);
+	Transmit_CAN_Message(&hcan1, 0x033, sizeof(a), a);
+	Transmit_CAN_Message(&hcan1, 0x034, sizeof(g), g);
 }
 
 
