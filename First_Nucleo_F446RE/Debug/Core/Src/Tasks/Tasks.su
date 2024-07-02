@@ -1,0 +1,6 @@
+../Core/Src/Tasks/Tasks.c:42:6:TaskInit	8	static
+../Core/Src/Tasks/Tasks.c:52:6:TaskFast	8	static
+../Core/Src/Tasks/Tasks.c:59:6:TaskMed	8	static
+../Core/Src/Tasks/Tasks.c:66:6:TaskSlow	4	static
+../Core/Src/Tasks/Tasks.c:79:6:Task1_AcquireSensorValues	16	static
+../Core/Src/Tasks/Tasks.c:94:6:Task1_AverageSensorValues	16	static
