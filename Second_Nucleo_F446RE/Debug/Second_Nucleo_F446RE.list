@@ -370,36 +370,37 @@ void CanInit(void)
 	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
  8000508:	2300      	movs	r3, #0
  800050a:	61bb      	str	r3, [r7, #24]
-	sFilterConfig.FilterIdHigh = 0x33<<5;
- 800050c:	f44f 63cc 	mov.w	r3, #1632	@ 0x660
- 8000510:	603b      	str	r3, [r7, #0]
-	sFilterConfig.FilterIdLow = 0;
- 8000512:	2300      	movs	r3, #0
- 8000514:	607b      	str	r3, [r7, #4]
-	sFilterConfig.FilterMaskIdHigh = 0;//0x7FF<<5; // SET 0 to unfilter
- 8000516:	2300      	movs	r3, #0
- 8000518:	60bb      	str	r3, [r7, #8]
-	sFilterConfig.FilterMaskIdLow = 0;
- 800051a:	2300      	movs	r3, #0
- 800051c:	60fb      	str	r3, [r7, #12]
+	sFilterConfig.FilterIdHigh = 0x0000;
+ 800050c:	2300      	movs	r3, #0
+ 800050e:	603b      	str	r3, [r7, #0]
+	sFilterConfig.FilterIdLow = 0x0000;
+ 8000510:	2300      	movs	r3, #0
+ 8000512:	607b      	str	r3, [r7, #4]
+	sFilterConfig.FilterMaskIdHigh = 0x0000;
+ 8000514:	2300      	movs	r3, #0
+ 8000516:	60bb      	str	r3, [r7, #8]
+	sFilterConfig.FilterMaskIdLow = 0x0000;
+ 8000518:	2300      	movs	r3, #0
+ 800051a:	60fb      	str	r3, [r7, #12]
 	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
- 800051e:	2301      	movs	r3, #1
- 8000520:	61fb      	str	r3, [r7, #28]
+ 800051c:	2301      	movs	r3, #1
+ 800051e:	61fb      	str	r3, [r7, #28]
 	HAL_CAN_ConfigFilter(&hcan2, &sFilterConfig);
- 8000522:	463b      	mov	r3, r7
- 8000524:	4619      	mov	r1, r3
- 8000526:	4805      	ldr	r0, [pc, #20]	@ (800053c <CanInit+0x48>)
- 8000528:	f000 fd08 	bl	8000f3c <HAL_CAN_ConfigFilter>
+ 8000520:	463b      	mov	r3, r7
+ 8000522:	4619      	mov	r1, r3
+ 8000524:	4805      	ldr	r0, [pc, #20]	@ (800053c <CanInit+0x48>)
+ 8000526:	f000 fd09 	bl	8000f3c <HAL_CAN_ConfigFilter>
 
 	HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);
- 800052c:	2102      	movs	r1, #2
- 800052e:	4803      	ldr	r0, [pc, #12]	@ (800053c <CanInit+0x48>)
- 8000530:	f000 ff4a 	bl	80013c8 <HAL_CAN_ActivateNotification>
+ 800052a:	2102      	movs	r1, #2
+ 800052c:	4803      	ldr	r0, [pc, #12]	@ (800053c <CanInit+0x48>)
+ 800052e:	f000 ff4b 	bl	80013c8 <HAL_CAN_ActivateNotification>
 }
- 8000534:	bf00      	nop
- 8000536:	3728      	adds	r7, #40	@ 0x28
- 8000538:	46bd      	mov	sp, r7
- 800053a:	bd80      	pop	{r7, pc}
+ 8000532:	bf00      	nop
+ 8000534:	3728      	adds	r7, #40	@ 0x28
+ 8000536:	46bd      	mov	sp, r7
+ 8000538:	bd80      	pop	{r7, pc}
+ 800053a:	bf00      	nop
  800053c:	20000038 	.word	0x20000038
 
 08000540 <Receive_CAN_Message>:

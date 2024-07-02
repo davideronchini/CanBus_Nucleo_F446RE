@@ -44,10 +44,10 @@ void CanInit(void)
 	sFilterConfig.FilterActivation = CAN_FILTER_ENABLE;
 	sFilterConfig.FilterFIFOAssignment = CAN_FILTER_FIFO0;
 	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
-	sFilterConfig.FilterIdHigh = 0x33<<5;
-	sFilterConfig.FilterIdLow = 0;
-	sFilterConfig.FilterMaskIdHigh = 0;//0x7FF<<5; // SET 0 to unfilter
-	sFilterConfig.FilterMaskIdLow = 0;
+	sFilterConfig.FilterIdHigh = 0x0000;
+	sFilterConfig.FilterIdLow = 0x0000;
+	sFilterConfig.FilterMaskIdHigh = 0x0000;
+	sFilterConfig.FilterMaskIdLow = 0x0000;
 	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
 	HAL_CAN_ConfigFilter(&hcan2, &sFilterConfig);
 
