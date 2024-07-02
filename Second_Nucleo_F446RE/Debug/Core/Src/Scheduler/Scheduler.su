@@ -1,0 +1,3 @@
+../Core/Src/Scheduler/Scheduler.c:33:6:SchTimerInterruptCallback	4	static
+../Core/Src/Scheduler/Scheduler.c:67:6:SchedulerInitFct	8	static
+../Core/Src/Scheduler/Scheduler.c:89:6:SchedulerMgmFct	8	static
