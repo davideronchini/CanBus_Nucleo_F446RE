@@ -24,10 +24,8 @@
  *
  */
 
-Vector a = {0};
-Vector g = {0};
-
-GPIO_PinState led_state = GPIO_PIN_SET;
+Vector a;
+Vector g;
 
 
 /**
@@ -40,6 +38,18 @@ void CanInit(void)
 {
 	/* Executed once at startup. */
 	HAL_CAN_Start(&hcan2);
+
+	// Configure the filter
+	CAN_FilterTypeDef sFilterConfig;
+	sFilterConfig.FilterActivation = CAN_FILTER_ENABLE;
+	sFilterConfig.FilterFIFOAssignment = CAN_FILTER_FIFO0;
+	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
+	sFilterConfig.FilterIdHigh = 0x33<<5;
+	sFilterConfig.FilterIdLow = 0;
+	sFilterConfig.FilterMaskIdHigh = 0;//0x7FF<<5; // SET 0 to unfilter
+	sFilterConfig.FilterMaskIdLow = 0;
+	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
+	HAL_CAN_ConfigFilter(&hcan2, &sFilterConfig);
 
 	HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);
 }
@@ -56,14 +66,14 @@ void Receive_CAN_Message(CAN_HandleTypeDef *hcan)
 
 		// Process CAN messages based on their IDs
 		switch (RxHeader.StdId) {
-		case 0x33:
+		case 0x033:
 			// Extract data from CAN message with ID 0x033
 			a.x = (uint8_t) RxData[0];
 			a.y = (uint8_t) RxData[1];
 			a.z = (uint8_t) RxData[2];
 			break;
 
-		case 0x34:
+		case 0x034:
 			// Extract data from CAN message with ID 0x034
 			g.x = (uint8_t) RxData[0];
 			g.y = (uint8_t) RxData[1];

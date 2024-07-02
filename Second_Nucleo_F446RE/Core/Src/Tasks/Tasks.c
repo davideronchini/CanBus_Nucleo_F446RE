@@ -42,7 +42,6 @@ void TaskInit(void)
 void TaskFast(void)
 {
 	/* TODO functions executed periodically (fast schedulation, e.g. 1 ms). */
-	//Receive_CAN_Message(&hcan2);
 }
 
 void TaskMed(void)
@@ -54,7 +53,7 @@ void TaskMed(void)
 void TaskSlow(void)
 {
 	/* TODO functions executed periodically (slow schedulation, e.g. 100 ms). */
-	// TODO: Receive_CAN_Message
+
 }
 
 

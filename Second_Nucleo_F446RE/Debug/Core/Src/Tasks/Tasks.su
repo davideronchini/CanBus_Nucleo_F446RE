@@ -1,4 +1,4 @@
 ../Core/Src/Tasks/Tasks.c:33:6:TaskInit	8	static
 ../Core/Src/Tasks/Tasks.c:42:6:TaskFast	4	static
-../Core/Src/Tasks/Tasks.c:48:6:TaskMed	4	static
-../Core/Src/Tasks/Tasks.c:54:6:TaskSlow	4	static
+../Core/Src/Tasks/Tasks.c:47:6:TaskMed	4	static
+../Core/Src/Tasks/Tasks.c:53:6:TaskSlow	4	static
