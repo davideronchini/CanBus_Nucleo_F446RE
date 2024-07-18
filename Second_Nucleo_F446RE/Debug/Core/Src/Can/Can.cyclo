@@ -1,2 +1,0 @@
-../Core/Src/Can/Can.c:37:6:CanInit	1
-../Core/Src/Can/Can.c:59:6:Receive_CAN_Message	4
