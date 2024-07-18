@@ -69,10 +69,10 @@ void TaskSlow(void)
 {
 	/* TODO functions executed periodically (slow schedulation, e.g. 100 ms). */
 	uint8_t a[] = {100, 50, 30};
-	uint8_t g[] = {70, 80, 90};
+	//uint8_t g[] = {70, 80, 90};
 
-	Transmit_CAN_Message(&hcan1, 0x033, sizeof(a), a);
-	Transmit_CAN_Message(&hcan1, 0x034, sizeof(g), g);
+	Transmit_CAN_Message(&hcan1, 0x033, 3, a);
+	//Transmit_CAN_Message(&hcan1, 0x034, 3, g);
 }
 
 
@@ -90,10 +90,10 @@ void Task1_AcquireSensorValues(void)
 		sum_readings[i] += raw_readings[i];
 
 		// Display
-		/*char msg[30];
+		char msg[25];
 		sprintf(msg, "%hu) Potentiometer: %hu \r\n", i, raw_readings[i]);
 		HAL_UART_Transmit(&huart2, (uint8_t*) msg, strlen(msg),
-		HAL_MAX_DELAY);*/
+		HAL_MAX_DELAY);
 	}
 }
 

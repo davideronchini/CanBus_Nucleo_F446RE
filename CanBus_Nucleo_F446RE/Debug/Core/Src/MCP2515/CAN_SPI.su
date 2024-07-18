@@ -1,0 +1,11 @@
+../Core/Src/MCP2515/CAN_SPI.c:17:6:CANSPI_Sleep	8	static
+../Core/Src/MCP2515/CAN_SPI.c:29:5:CANSPI_Initialize	40	static
+../Core/Src/MCP2515/CAN_SPI.c:128:9:CANSPI_Transmit	24	static
+../Core/Src/MCP2515/CAN_SPI.c:176:9:CANSPI_Receive	40	static
+../Core/Src/MCP2515/CAN_SPI.c:227:9:CANSPI_messagesInBuffer	16	static
+../Core/Src/MCP2515/CAN_SPI.c:247:9:CANSPI_isBussOff	16	static
+../Core/Src/MCP2515/CAN_SPI.c:262:9:CANSPI_isRxErrorPassive	16	static
+../Core/Src/MCP2515/CAN_SPI.c:277:9:CANSPI_isTxErrorPassive	16	static
+../Core/Src/MCP2515/CAN_SPI.c:292:17:convertReg2ExtendedCANid	32	static
+../Core/Src/MCP2515/CAN_SPI.c:314:17:convertReg2StandardCANid	24	static
+../Core/Src/MCP2515/CAN_SPI.c:327:13:convertCANid2Reg	32	static

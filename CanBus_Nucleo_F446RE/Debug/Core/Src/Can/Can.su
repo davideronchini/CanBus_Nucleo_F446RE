@@ -1,0 +1,3 @@
+../Core/Src/Can/Can.c:39:6:CanInit	16	static
+../Core/Src/Can/Can.c:49:6:Receive_CAN_Message	8	static
+../Core/Src/Can/Can.c:77:6:Transmit_CAN_Message	32	static

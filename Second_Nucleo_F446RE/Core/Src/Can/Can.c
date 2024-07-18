@@ -37,21 +37,23 @@ Vector g;
 void CanInit(void)
 {
 	/* Executed once at startup. */
-	HAL_CAN_Start(&hcan2);
+	HAL_CAN_Start(&hcan1);
 
 	// Configure the filter
 	CAN_FilterTypeDef sFilterConfig;
 	sFilterConfig.FilterActivation = CAN_FILTER_ENABLE;
+	sFilterConfig.FilterBank = 0;
 	sFilterConfig.FilterFIFOAssignment = CAN_FILTER_FIFO0;
-	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
 	sFilterConfig.FilterIdHigh = 0x0000;
 	sFilterConfig.FilterIdLow = 0x0000;
 	sFilterConfig.FilterMaskIdHigh = 0x0000;
 	sFilterConfig.FilterMaskIdLow = 0x0000;
+	sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;
 	sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;
-	HAL_CAN_ConfigFilter(&hcan2, &sFilterConfig);
+	sFilterConfig.SlaveStartFilterBank=14; // Put double (i.e. 28) if you use two Cans
+	HAL_CAN_ConfigFilter(&hcan1, &sFilterConfig);
 
-	HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);
+	HAL_CAN_ActivateNotification(&hcan1, CAN_IT_RX_FIFO0_MSG_PENDING|CAN_IT_RX_FIFO1_MSG_PENDING);
 }
 
 void Receive_CAN_Message(CAN_HandleTypeDef *hcan)

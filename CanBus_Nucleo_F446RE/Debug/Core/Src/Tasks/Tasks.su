@@ -1,0 +1,10 @@
+../Core/Src/Tasks/Tasks.c:53:6:TaskInit	8	static
+../Core/Src/Tasks/Tasks.c:67:6:TaskFast	8	static
+../Core/Src/Tasks/Tasks.c:76:6:TaskMed	8	static
+../Core/Src/Tasks/Tasks.c:87:6:TaskConv	8	static
+../Core/Src/Tasks/Tasks.c:96:6:TaskSlow	4	static
+../Core/Src/Tasks/Tasks.c:137:6:Task1_AcquireSensorValues	40	static
+../Core/Src/Tasks/Tasks.c:155:6:Task1_AverageSensorValues	16	static
+../Core/Src/Tasks/Tasks.c:193:6:Task2_ConvertAndSendSensorData_Task4_ErrorHandling	24	static
+../Core/Src/Tasks/Tasks.c:256:6:Task3_ReadCANMessages	8	static
+../Core/Src/Tasks/Tasks.c:261:6:Debug_CAN_Messages	152	static
