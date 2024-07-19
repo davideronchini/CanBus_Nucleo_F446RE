@@ -6,6 +6,7 @@
  */
 
 #include "Tasks.h"
+#include <stdio.h> // TODO: Delete the inclusion of this library if you no longer use the serial
 
 
 /**
@@ -17,6 +18,8 @@
 
 #define ADC_BUF_LEN 4096
 #define NBR_SENSORS 1
+
+// #define DEBUG_MODE /* Define the Mode of Operation: remove the comment to set debug mode */
 
 
 /**
@@ -32,16 +35,7 @@ uint16_t raw_readings[NBR_SENSORS];
 uint16_t sum_readings[NBR_SENSORS];
 uint16_t avg_readings[NBR_SENSORS];
 
-
-/**
- *
- *  Define the Mode of Operation:
- *   - remove the comment to set the desired mode -
- *
- *
- */
-
-// #define DEBUG_MODE
+uint8_t resetFlag = 0;
 
 
 /**
@@ -142,13 +136,11 @@ void Task1_AcquireSensorValues(void)
 		sum_readings[i] += raw_readings[i];
 
 		// Display
-		char msg[] = ") Potentiometer: ";
-		HAL_UART_Transmit(&huart2, (uint8_t*) &i, 1, HAL_MAX_DELAY);
-		HAL_UART_Transmit(&huart2, (uint8_t*) msg, sizeof(msg) - 1, HAL_MAX_DELAY);
-		HAL_UART_Transmit(&huart2, (uint8_t*) &raw_readings[i], 1, HAL_MAX_DELAY);
+		char msg[50];
+		uint16_t msg_length = sprintf(msg, "%d) Potentiometer: %d\n", i, raw_readings[i]);
 
-		uint8_t lf = '\n';
-		HAL_UART_Transmit(&huart2, &lf, 1, HAL_MAX_DELAY);
+		// Transmit message via UART
+		HAL_UART_Transmit(&huart2, (uint8_t*)msg, msg_length, HAL_MAX_DELAY);
 	}
 }
 
@@ -192,8 +184,6 @@ void Task1_AverageSensorValues(void)
  *---------------------------------------------------------------------------- */
 void Task2_ConvertAndSendSensorData_Task4_ErrorHandling(void)
 {
-	uint8_t resetFlag = 0;
-
 	uint8_t TxData[5];
 	for(uint8_t i = 0; i < 5; i++){
 		TxData[i] = 0;
@@ -271,9 +261,6 @@ void Debug_CAN_Messages(void)
 	uCAN_MSG rxMessage;
 	if (CANSPI_Receive(&rxMessage)) {
 
-		// Character for carriage return in messages sent via serial
-		uint8_t lf = '\n';
-
 		// Check for specific CAN message ID
 		switch(rxMessage.frame.id){
 			case 0x35:
@@ -284,25 +271,24 @@ void Debug_CAN_Messages(void)
 				uint8_t s4 = (uint8_t) rxMessage.frame.data3;
 
 				// Display received messages
-				const char msg_35_1[] = "Sensor 1: ";
-				HAL_UART_Transmit(&huart2, (uint8_t*) msg_35_1, sizeof(msg_35_1) - 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, (uint8_t*) &s1, 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, &lf, 1, HAL_MAX_DELAY);
+				char msg_35[50];
+				uint16_t msg_35_length;
 
-				const char msg_35_2[] = "Sensor 2: ";
-				HAL_UART_Transmit(&huart2, (uint8_t*) msg_35_2, sizeof(msg_35_2) - 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, (uint8_t*) &s2, 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, &lf, 1, HAL_MAX_DELAY);
+				// Formatting and sending the message for the sensor 1
+				msg_35_length = sprintf(msg_35, "Sensor 1: %d\n", s1);
+				HAL_UART_Transmit(&huart2, (uint8_t*)msg_35, msg_35_length, HAL_MAX_DELAY);
 
-				const char msg_35_3[] = "Sensor 3: ";
-				HAL_UART_Transmit(&huart2, (uint8_t*) msg_35_3, sizeof(msg_35_3) - 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, (uint8_t*) &s3, 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, &lf, 1, HAL_MAX_DELAY);
+				// Formatting and sending the message for the sensor 2
+				msg_35_length = sprintf(msg_35, "Sensor 2: %d\n", s2);
+				HAL_UART_Transmit(&huart2, (uint8_t*)msg_35, msg_35_length, HAL_MAX_DELAY);
 
-				const char msg_35_4[] = "Sensor 4: ";
-				HAL_UART_Transmit(&huart2, (uint8_t*) msg_35_4, sizeof(msg_35_4) - 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, (uint8_t*) &s4, 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, &lf, 1, HAL_MAX_DELAY);
+				// Formatting and sending the message for the sensor 3
+				msg_35_length = sprintf(msg_35, "Sensor 3: %d\n", s3);
+				HAL_UART_Transmit(&huart2, (uint8_t*)msg_35, msg_35_length, HAL_MAX_DELAY);
+
+				// Formatting and sending the message for the sensor 4
+				msg_35_length = sprintf(msg_35, "Sensor 4: %d\n", s4);
+				HAL_UART_Transmit(&huart2, (uint8_t*)msg_35, msg_35_length, HAL_MAX_DELAY);
 
 				break;
 
@@ -311,10 +297,12 @@ void Debug_CAN_Messages(void)
 				uint8_t s5 = (uint8_t) rxMessage.frame.data0;
 
 				// Display received messages
-				const char msg_36[] = "Sensor 5: ";
-				HAL_UART_Transmit(&huart2, (uint8_t*) msg_36, sizeof(msg_36) - 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, (uint8_t*) &s5, 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, &lf, 1, HAL_MAX_DELAY);
+				char msg_36[50];
+				uint16_t msg_36_length;
+
+				// Formatting and sending the message for the sensor 5
+				msg_36_length = sprintf(msg_36, "Sensor 5: %d\n", s5);
+				HAL_UART_Transmit(&huart2, (uint8_t*)msg_36, msg_36_length, HAL_MAX_DELAY);
 
 				break;
 
@@ -324,11 +312,12 @@ void Debug_CAN_Messages(void)
 				uint8_t sensorNumber = (uint8_t) rxMessage.frame.data1;
 
 				// Display received messages
-				const char msg_05[] = "Error: ";
-				HAL_UART_Transmit(&huart2, (uint8_t*) msg_05, sizeof(msg_05) - 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, (uint8_t*) &eChar, 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, (uint8_t*) &sensorNumber, 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, &lf, 1, HAL_MAX_DELAY);
+				char msg_05[50];
+				uint16_t msg_05_length;
+
+				// Formatting and sending the error message
+				msg_05_length = sprintf(msg_05, "Error: %c%d\n", eChar, sensorNumber);
+				HAL_UART_Transmit(&huart2, (uint8_t*)msg_05, msg_05_length, HAL_MAX_DELAY);
 
 				break;
 
@@ -337,10 +326,11 @@ void Debug_CAN_Messages(void)
 				char receivedChar = (char) rxMessage.frame.data0;
 
 				// Display received messages
-				const char msg_06[] = "Connection Reestablished: ";
-				HAL_UART_Transmit(&huart2, (uint8_t*) msg_06, sizeof(msg_06) - 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, (uint8_t*) &receivedChar, 1, HAL_MAX_DELAY);
-				HAL_UART_Transmit(&huart2, &lf, 1, HAL_MAX_DELAY);
+				char msg_06[50];
+				uint16_t msg_06_length;
+
+				msg_06_length = sprintf(msg_06, "Message: %c\n", receivedChar);
+				HAL_UART_Transmit(&huart2, (uint8_t*)msg_06, msg_06_length, HAL_MAX_DELAY);
 
 				break;
 		}
