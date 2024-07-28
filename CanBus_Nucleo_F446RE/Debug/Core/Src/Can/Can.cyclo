@@ -1,0 +1,9 @@
+../Core/Src/Can/Can.c:55:6:CanInit	2
+../Core/Src/Can/Can.c:134:6:Transmit_CAN_Message	1
+../Core/Src/Can/Can.c:146:6:Receive_CAN_Message_MCP2515	4
+../Core/Src/Can/Can.c:179:6:Debug_Receive_CAN_Message_MCP2515	8
+../Core/Src/Can/Can.c:234:6:Transmit_CAN_Message_MCP2515	4
+../Core/Src/Can/Can.c:273:6:Receive_CAN_Message_SN65HVD230	4
+../Core/Src/Can/Can.c:313:6:Debug_Receive_CAN_Message_SN65HVD230	8
+../Core/Src/Can/Can.c:371:6:Transmit_CAN_Message_SN65HVD230	2
+../Core/Src/Can/Can.c:403:6:Display_Can_Messages	7
