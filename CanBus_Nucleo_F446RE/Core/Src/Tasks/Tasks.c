@@ -15,9 +15,6 @@
  *
  */
 
-#define ADC_BUF_LEN 4096
-#define NBR_SENSORS 1
-
 
 /**
  *
@@ -26,11 +23,11 @@
  *
  */
 
-uint16_t adc_buf[ADC_BUF_LEN];
+uint32_t adc_buf[ADC_BUF_LEN];
 
-uint16_t raw_readings[NBR_SENSORS];
-uint16_t sum_readings[NBR_SENSORS];
-uint16_t avg_readings[NBR_SENSORS];
+uint16_t raw_readings[ADC_BUF_LEN];
+uint16_t sum_readings[ADC_BUF_LEN];
+uint16_t avg_readings[ADC_BUF_LEN];
 
 uint8_t resetFlag = 0;
 
@@ -49,7 +46,7 @@ void TaskInit(void)
 	SchedulerInitFct();
 
 	#ifndef DEBUG_MODE
-		HAL_ADC_Start_DMA(&hadc1, (uint32_t*) adc_buf, ADC_BUF_LEN);
+		HAL_ADC_Start_DMA(&hadc1, adc_buf, ADC_BUF_LEN);
 	#endif
 
 	CanInit();
@@ -140,12 +137,12 @@ void Task1_AcquireSensorValues(void)
 
 		sum_readings[i] += raw_readings[i];
 
-		/* // Display
+		 // Display
 		char msg[50];
 		uint16_t msg_length = sprintf(msg, "%d) Potentiometer: %d\n", i, raw_readings[i]);
 
 		// Transmit message via UART
-		HAL_UART_Transmit(&huart2, (uint8_t*)msg, msg_length, HAL_MAX_DELAY); */
+		HAL_UART_Transmit(&huart2, (uint8_t*)msg, msg_length, HAL_MAX_DELAY);
 	}
 }
 
@@ -194,7 +191,7 @@ void Task2_ConvertAndSendSensorData_Task4_ErrorHandling(void)
 		TxData[i] = 0;
 	}
 
-	int8_t conv_readings[NBR_SENSORS];
+	int8_t conv_readings[ADC_BUF_LEN];
 	for (uint8_t i = 0; i < hadc1.Init.NbrOfConversion; i++) {
 		// Convert the sensor reading to a percentage scale (0% - 100%).
 		// The sensor's voltage range is from 0.3V (reading of 373) to 3V (reading of 3724).

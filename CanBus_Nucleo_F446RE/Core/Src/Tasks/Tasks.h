@@ -9,6 +9,9 @@
 /* TODO Defines, variables and functions to be visible (exported) to other modules that includes "Scheduler.h". */
 
 // #define DEBUG_MODE /* Define the Mode of Operation: remove the comment to set debug mode */
+#define ADC_BUF_LEN 2
+
+extern uint32_t adc_buf[ADC_BUF_LEN];
 
 extern void TaskInit(void);
 extern void TaskFast(void);
