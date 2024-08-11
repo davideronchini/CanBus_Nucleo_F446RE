@@ -12,4 +12,5 @@ SN65HVD230:
 Potentiometer & MCP2551: https://www.micropeta.com/video115
 
 ADC:
- - https://deepbluembedded.com/stm32-adc-multi-channel-scan-continuous-mode-dma-poll-examples/#stm32-adc-multichannel-scan-continuous-mode-dma-example
+ - https://www.youtube.com/watch?v=zipjCtiHYr8
+ - (Alternatively) https://deepbluembedded.com/stm32-adc-multi-channel-scan-continuous-mode-dma-poll-examples/#stm32-adc-multichannel-scan-continuous-mode-dma-example
