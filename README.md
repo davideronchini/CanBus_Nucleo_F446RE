@@ -1,7 +1,5 @@
 # CanBus_Nucleo_F446RE
 
-[F446RE Pinout](https://os.mbed.com/platforms/ST-Nucleo-F446RE/)
-
 ## Descrizione del Progetto
 
 Questa repository contiene il codice per la gestione del protocollo CAN Bus, la lettura dei sensori tramite ADC con DMA e la comunicazione seriale per una scheda STM32 Nucleo-F446RE. È utilizzata principalmente come ambiente di test per velocizzare lo sviluppo di funzionalità che verranno successivamente implementate su una scheda Nucleo-F756ZG.
@@ -25,7 +23,7 @@ Questa repository contiene il codice per la gestione del protocollo CAN Bus, la 
 
 Di seguito il pinout della Nucleo-F446RE utilizzato per questo progetto:
 
-![Pinout Nucleo-F446RE](https://www.st.com/content/ccc/resource/technical/document/user_manual/group1/56/d1/d1/63/d3/4d/41/eb/DM00231744/files/DM00231744.pdf/jcr:content/translations/en.DM00231744.pdf)
+[F446RE Pinout](https://os.mbed.com/platforms/ST-Nucleo-F446RE/)
 
 Per ulteriori dettagli sul pinout della scheda Nucleo-F446RE, consulta la risorsa seguente:
 [F446RE Pinout](https://os.mbed.com/platforms/ST-Nucleo-F446RE/)
