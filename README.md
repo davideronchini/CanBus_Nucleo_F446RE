@@ -47,9 +47,9 @@ Di seguito il pinout della Nucleo-F446RE utilizzato per questo progetto:
    [Video Tutorial 2](https://www.youtube.com/watch?v=-lcrrRrKdFg)
 
 - **Potentiometro & MCP2551**:  
-   [Video Tutorial](https://www.micropeta.com/video115)
+   [Guida all'uso](https://www.micropeta.com/video115)
 
 - **ADC**:  
-   [Guida all'uso](https://www.youtube.com/watch?v=zipjCtiHYr8)  
    [Approfondimento](https://deepbluembedded.com/stm32-adc-multi-channel-scan-continuous-mode-dma-poll-examples/#stm32-adc-multichannel-scan-continuous-mode-dma-example)
+  [Video Tutorial](https://www.youtube.com/watch?v=zipjCtiHYr8)  
 
