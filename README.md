@@ -25,9 +25,6 @@ Di seguito il pinout della Nucleo-F446RE utilizzato per questo progetto:
 
 [F446RE Pinout](https://os.mbed.com/platforms/ST-Nucleo-F446RE/)
 
-Per ulteriori dettagli sul pinout della scheda Nucleo-F446RE, consulta la risorsa seguente:
-[F446RE Pinout](https://os.mbed.com/platforms/ST-Nucleo-F446RE/)
-
 ### Istruzioni di Compilazione
 
 1. Clona la repository:
