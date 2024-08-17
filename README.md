@@ -1,6 +1,6 @@
 # CanBus_Nucleo_F446RE
 
-![Nucleo-F446RE](https://www.st.com/content/ccc/resource/sales_and_marketing/presentation/product_presentation/group0/47/11/d6/48/26/96/41/70/NUCLEO-F446RE/files/stm32-nucleo-board-stm32-nucleo-f446re.pdf/_jcr_content/translations/en.stm32-nucleo-board-stm32-nucleo-f446re.pdf)
+[F446RE Pinout](https://os.mbed.com/platforms/ST-Nucleo-F446RE/)
 
 ## Descrizione del Progetto
 
@@ -56,7 +56,4 @@ Per ulteriori dettagli sul pinout della scheda Nucleo-F446RE, consulta la risors
 - **ADC**:  
    [Video Spiegazione](https://www.youtube.com/watch?v=zipjCtiHYr8)  
    [Approfondimento](https://deepbluembedded.com/stm32-adc-multi-channel-scan-continuous-mode-dma-poll-examples/#stm32-adc-multichannel-scan-continuous-mode-dma-example)
-
-- **F446RE Pinout**:  
-   [F446RE Pinout](https://os.mbed.com/platforms/ST-Nucleo-F446RE/)
 
