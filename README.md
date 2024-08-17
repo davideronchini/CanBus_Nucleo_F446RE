@@ -43,13 +43,13 @@ Di seguito il pinout della Nucleo-F446RE utilizzato per questo progetto:
    [Video Tutorial](https://www.youtube.com/watch?v=sd6FKkfzU2I)
 
 - **SN65HVD230**:  
-   [Configurazione e Test](https://youtu.be/KHNRftBa1Vc?si=2C673-Au-6wTgh2l)  
-   [Ulteriori Dettagli](https://www.youtube.com/watch?v=-lcrrRrKdFg)
+   [Video Tutorial 1](https://youtu.be/KHNRftBa1Vc?si=2C673-Au-6wTgh2l)  
+   [Video Tutorial 2](https://www.youtube.com/watch?v=-lcrrRrKdFg)
 
 - **Potentiometro & MCP2551**:  
    [Video Tutorial](https://www.micropeta.com/video115)
 
 - **ADC**:  
-   [Video Spiegazione](https://www.youtube.com/watch?v=zipjCtiHYr8)  
+   [Video Tutorial](https://www.youtube.com/watch?v=zipjCtiHYr8)  
    [Approfondimento](https://deepbluembedded.com/stm32-adc-multi-channel-scan-continuous-mode-dma-poll-examples/#stm32-adc-multichannel-scan-continuous-mode-dma-example)
 
