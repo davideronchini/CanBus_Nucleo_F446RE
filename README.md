@@ -30,7 +30,7 @@ Di seguito il pinout della Nucleo-F446RE utilizzato per questo progetto:
 
 1. Clona la repository:
    ```bash
-   git clone https://github.com/tuo-username/CanBus_Nucleo_F446RE.git
+   git clone https://github.com/davideronchini/CanBus_Nucleo_F446RE.git
 2. Apri il progetto con STM32CubeIDE.
 3. Compila e carica il codice sulla Nucleo-F446RE.
 4. Configura la tua rete CAN Bus e collega la scheda.
