@@ -17,7 +17,8 @@ Questa repository contiene il codice per la gestione del protocollo CAN Bus, la 
 - [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html)
 - [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)
 - Scheda Nucleo-F446RE
-- Cavi per la connessione CAN Bus
+- Almeno due transceiver CAN, come [MCP2515](https://blog.naver.com/eziya76/221188525127) o [SN65HVD230](https://youtu.be/KHNRftBa1Vc?si=2C673-Au-6wTgh2l)
+- Almeno due potenziometri
 
 ### Configurazione Hardware
 
