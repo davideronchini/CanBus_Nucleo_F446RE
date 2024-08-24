@@ -64,8 +64,8 @@ all: main-build
 main-build: CanBus_Nucleo_F446RE.elf secondary-outputs
 
 # Tool invocations
-CanBus_Nucleo_F446RE.elf CanBus_Nucleo_F446RE.map: $(OBJS) $(USER_OBJS) C:\Users\dadol\Documents\School\Formula\ SAE\STM32\CanBus_Nucleo_F446RE\CanBus_Nucleo_F446RE\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "CanBus_Nucleo_F446RE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\dadol\Documents\School\Formula SAE\STM32\CanBus_Nucleo_F446RE\CanBus_Nucleo_F446RE\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CanBus_Nucleo_F446RE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+CanBus_Nucleo_F446RE.elf CanBus_Nucleo_F446RE.map: $(OBJS) $(USER_OBJS) C:\Users\dadol\Documents\Education\Formula\ SAE\STM32\CanBus_Nucleo_F446RE\CanBus_Nucleo_F446RE\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "CanBus_Nucleo_F446RE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\dadol\Documents\Education\Formula SAE\STM32\CanBus_Nucleo_F446RE\CanBus_Nucleo_F446RE\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CanBus_Nucleo_F446RE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -25,12 +25,12 @@
 
 uint32_t adc_buf[ADC_BUF_LEN];
 
-uint16_t raw_readings[ADC_BUF_LEN];
-uint16_t sum_readings[ADC_BUF_LEN];
-uint16_t avg_readings[ADC_BUF_LEN];
+uint32_t raw_readings[ADC_BUF_LEN];
+uint32_t sum_readings[ADC_BUF_LEN];
+uint32_t avg_readings[ADC_BUF_LEN];
 
-uint8_t resetFlag = 0;
-
+// Global variable to track the connection status
+volatile uint8_t isConnectionEstablished = 1;
 
 /**
  *
@@ -133,13 +133,13 @@ void TaskSlow(void)
 void Task1_AcquireSensorValues(void)
 {
 	for (uint8_t i = 0; i < hadc1.Init.NbrOfConversion; i++) {
-		raw_readings[i] = (uint16_t) adc_buf[i];
+		raw_readings[i] = adc_buf[i];
 
 		sum_readings[i] += raw_readings[i];
 
-		 // Display
+		// Display
 		char msg[50];
-		uint16_t msg_length = sprintf(msg, "%d) Potentiometer: %d\n", i, raw_readings[i]);
+		uint16_t msg_length = sprintf(msg, "%u) Potentiometer: %lu\n", i, raw_readings[i]);
 
 		// Transmit message via UART
 		HAL_UART_Transmit(&huart2, (uint8_t*)msg, msg_length, HAL_MAX_DELAY);
@@ -186,50 +186,40 @@ void Task1_AverageSensorValues(void)
  *---------------------------------------------------------------------------- */
 void Task2_ConvertAndSendSensorData_Task4_ErrorHandling(void)
 {
-	uint8_t TxData[5];
-	for(uint8_t i = 0; i < 5; i++){
-		TxData[i] = 0;
-	}
+	uint8_t TxData[5] = {0};
+	uint8_t allSensorsValid = 1;
 
-	int8_t conv_readings[ADC_BUF_LEN];
 	for (uint8_t i = 0; i < hadc1.Init.NbrOfConversion; i++) {
 		// Convert the sensor reading to a percentage scale (0% - 100%).
 		// The sensor's voltage range is from 0.3V (reading of 373) to 3V (reading of 3724).
 		// The maximum possible sensor reading is 4096, corresponding to 110% in this formula.
 		// The conversion formula scales the average reading proportionally.
-		conv_readings[i] = (int8_t)(((avg_readings[i]-373) * 100) / (3723 - 373));
+		int8_t conv_reading = (int8_t) (((avg_readings[i] - 373) * 100) / (3723 - 373));
 
-		// Display
-		/*char msg[50];
-		sprintf(msg, "\n\n%hu) Converted Values: %d \r\n", i, conv_readings[i]);
-		HAL_UART_Transmit(&huart3, (uint8_t*) msg, strlen(msg),
-		HAL_MAX_DELAY);*/
+		// Check if the sensor reading is within the valid range
+		if (conv_reading >= 0 && conv_reading <= 100){ // OK
+		    // Valid reading: update TxData
+		    TxData[i] = (uint8_t) conv_reading;
+		} else { // ERROR
+			// Invalid reading: send error message via CAN
+			uint8_t ErrorTxData[2] = {'E', i + 1};
+			Transmit_CAN_Message(&hcan1, 0x05, 2, ErrorTxData);
+			allSensorsValid = 0;
 
-		if (conv_readings[i] >= 0 && conv_readings[i] <= 100){ // OK
-
-			//Re-establish the connection
-			if(resetFlag){
-				resetFlag = 0;
-
-				// Assign the connection re-establishment message to the CAN transmit data
-				uint8_t ReestablishTxData = (uint8_t)'R';
-				Transmit_CAN_Message(&hcan1, 0x06, 1, &ReestablishTxData); // Add CAN message to transmit queue
-			}
-
-			// Assign the converted reading to the CAN transmit data
-			TxData[i] = (uint8_t) conv_readings[i];
-		}else{ // ERROR
-			resetFlag = 1;
-
-			// Assign the error message to the CAN transmit data
-			uint8_t ErrorTxData[2] = {(uint8_t) 'E', i + 1};
-			Transmit_CAN_Message(&hcan1, 0x05, 2, ErrorTxData); // Add CAN message to transmit queue
-			// TODO: enable this code if can2 is enabled:
-			//Transmit_CAN_Message(&hcan2, 0x005, 2, &TxData);
+			isConnectionEstablished = 0; // Mark the connection as unstable
 		}
 	}
 
-	if (!resetFlag){
+	// If all sensors are valid, send the data via CAN
+	if (allSensorsValid) {
+		if (!isConnectionEstablished) {
+			// Send connection re-establishment message
+			uint8_t ReestablishTxData = 'R';
+			Transmit_CAN_Message(&hcan1, 0x06, 1, &ReestablishTxData);
+
+			isConnectionEstablished = 1; // Mark the connection as stable
+		}
+
 		// Send sensor data via CAN
 		Transmit_CAN_Message(&hcan1, 0x35, 4, TxData);
 		Transmit_CAN_Message(&hcan1, 0x36, 1, &TxData[4]);

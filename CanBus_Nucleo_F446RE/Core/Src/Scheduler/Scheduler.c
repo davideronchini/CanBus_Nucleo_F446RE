@@ -15,7 +15,6 @@
  *
  */
 
-// TODO: Check if it is better to use the volatile keyword or not
 volatile uint32_t tickCounter = 0;
 volatile uint8_t fastTaskFlag = 0;
 volatile uint8_t mediumTaskFlag = 0;

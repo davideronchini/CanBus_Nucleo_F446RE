@@ -278,7 +278,7 @@ void Receive_CAN_Message_SN65HVD230(CAN_HandleTypeDef *hcan)
 	// Check if there is a CAN message available on CAN2
 	if (HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxHeader, RxData) == HAL_OK) {
 		// Turn on the built-in LED to indicate successful reception
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET); // Green Led
+		//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET); // Green Led
 
 		// Process CAN messages based on their IDs
 		switch (RxHeader.StdId) {
@@ -306,7 +306,7 @@ void Receive_CAN_Message_SN65HVD230(CAN_HandleTypeDef *hcan)
 		}
 	}else{
 		// Turn off the built-in LED to indicate an error during reception
-		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+		//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 	}
 }
 

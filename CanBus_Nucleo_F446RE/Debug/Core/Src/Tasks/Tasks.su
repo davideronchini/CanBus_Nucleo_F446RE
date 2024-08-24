@@ -6,4 +6,4 @@
 ../Core/Src/Tasks/Tasks.c:133:6:Task1_AcquireSensorValues	64	static
 ../Core/Src/Tasks/Tasks.c:149:6:Task1_AverageSensorValues	16	static
 ../Core/Src/Tasks/Tasks.c:187:6:Task2_ConvertAndSendSensorData_Task4_ErrorHandling	24	static
-../Core/Src/Tasks/Tasks.c:248:6:Task3_ReadCANMessages	4	static
+../Core/Src/Tasks/Tasks.c:238:6:Task3_ReadCANMessages	4	static
