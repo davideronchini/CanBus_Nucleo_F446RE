@@ -79,7 +79,7 @@ To get started with this project, follow these steps:
 
 Attached below is the photo with the hardware connections:
 
-<img src="hardware_connections.jpg" alt="hardware connections" width="200"/>
+<img src="hardware_connections.jpg" alt="hardware connections" width="600"/>
    
 ## Credits
 
