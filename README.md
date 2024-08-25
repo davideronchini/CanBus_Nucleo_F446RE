@@ -81,18 +81,18 @@ To get started with this project, follow these steps:
 
 Some of the functionalities used were learned through the following resources: (Insert the appropriate emoji next to each resource in the list: a video emoji for video content and a document emoji for PDFs or websites)
 
-- 📑**MCP2515**:  
+- **MCP2515**:  
    📄[MCP2515 Usage Guide](https://blog.naver.com/eziya76/221188525127)  
    🎞️[Video Tutorial](https://www.youtube.com/watch?v=sd6FKkfzU2I)
 
-- 📑**SN65HVD230**:  
+- **SN65HVD230**:  
    🎞️[Video Tutorial 1](https://youtu.be/KHNRftBa1Vc?si=2C673-Au-6wTgh2l)  
    🎞️[Video Tutorial 2](https://www.youtube.com/watch?v=-lcrrRrKdFg)
 
-- 📑**Potentiometro & MCP2551**:  
+- **Potentiometro & MCP2551**:  
    🎞️[Usage Guide](https://www.micropeta.com/video115)
 
-- 📑**ADC**:  
+- **ADC**:  
    🎞️[Video Tutorial](https://www.youtube.com/watch?v=zipjCtiHYr8)  
    📄[In-depth Guide](https://deepbluembedded.com/stm32-adc-multi-channel-scan-continuous-mode-dma-poll-examples/#stm32-adc-multichannel-scan-continuous-mode-dma-example)
 
