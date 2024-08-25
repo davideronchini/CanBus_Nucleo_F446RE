@@ -75,11 +75,11 @@ To get started with this project, follow these steps:
 2. **Open the project with STM32CubeIDE**
 3. **Compile and upload the code to the Nucleo F446RE**
 4. **Set up your CAN Bus network and connect the board**
-5. **Monitor serial communication for debugging and verification**
+5. **Monitor serial communication for debugging and verification (e.g. using Termite)**
 
 Attached below is the photo with the hardware connections:
 
-<img src="hardware_connections.jpg" alt="hardware connections" width="600"/>
+<img src="hardware_connections.jpg" alt="hardware connections" width="550"/>
    
 ## Credits
 
