@@ -27,7 +27,18 @@ The project structure used allows for the separation of feature implementation c
   │ └── main.c
   └── Startup/
 ```
-An important note about the scheduler: it allows for event timing through a counter incremented by the SysTick internal timer every millisecond. The logic and formula linking the HCK clock frequency to the SysTick interrupt are found in the `Scheduler.c` file, while the `SchTimerInterruptCallback()` function, which must be called by SysTick, has been placed in the `stm32f4xx_it.c` file as follows:
+An important note about the scheduler: it allows for event timing through a counter incremented by the SysTick internal timer every millisecond. The logic and formula linking the HCK clock frequency to the SysTick interrupt are found in the `Scheduler.c` file, while the `SchTimerInterruptCallback()` function, which must be called by SysTick, has been placed in the `stm32f4xx_it.c` file.
+
+```c
+void SchedulerInitFct(void)
+{
+	// Initialize SysTick to generate an interrupt every 1 ms.
+	HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / 160); // Formula for the divider: 128 MHz (of HCLK) / 4 (of APB1 Prescaler) / 2 (of APB2 Prescaler) * 10
+
+	// Initialize other variables and flags if necessary
+	...
+}
+```
 
 ```c
 void SysTick_Handler(void)
