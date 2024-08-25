@@ -101,5 +101,5 @@ Some of the functionalities used were learned through the following resources: (
 
 If you have any questions, would like to discuss this project further, or are interested in potential collaboration opportunities, please feel free to connect with me through the following channels:
 
-- LinkedIn: [davideronchini](www.linkedin.com/in/davideronchini)
+- LinkedIn: [davideronchini](https://www.linkedin.com/in/davideronchini)
 - Email: [ronchinidavid3@gmail.com](mailto:ronchinidavid3@gmail.com)
