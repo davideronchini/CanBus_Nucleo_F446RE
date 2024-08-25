@@ -1,56 +1,81 @@
-# CanBus_Nucleo_F446RE
+# CanBus Communication
+**`Nucleo F446RE ⚙️`**
 
-## Descrizione del Progetto
+This repository contains the code for managing the CAN Bus protocol, reading sensors via ADC with DMA, and serial communication for an STM32 Nucleo-F446RE board. It is primarily used as a testing environment to accelerate the development of features that will later be implemented on a Nucleo-F756ZG board.
 
-Questa repository contiene il codice per la gestione del protocollo CAN Bus, la lettura dei sensori tramite ADC con DMA e la comunicazione seriale per una scheda STM32 Nucleo-F446RE. È utilizzata principalmente come ambiente di test per velocizzare lo sviluppo di funzionalità che verranno successivamente implementate su una scheda Nucleo-F756ZG.
+## Features
+- ✅ **ADC with DMA**: Continuous reading from multiple sensors efficiently, without overloading the CPU.
+- ✅ **CAN Bus Protocol**: Sending and receiving messages via CAN Bus, ideal for automotive or industrial automation applications.
+- ✅ **Serial Communication**: Debugging and logging through the serial interface, with the ability to monitor the system's operation in real-time.
 
-## Caratteristiche Principali
+## 🔗 Project Structure
 
-- **ADC con DMA**: Lettura continua da più sensori in modo efficiente e senza sovraccarico della CPU.
-- **Protocollo CAN Bus**: Invio e ricezione di messaggi tramite CAN Bus, ideale per applicazioni automotive o di automazione industriale.
-- **Comunicazione seriale**: Debug e log tramite interfaccia seriale, con possibilità di monitorare il funzionamento del sistema in tempo reale.
+The project structure used allows for the separation of feature implementation contained in the `tasks` folder from the control logic of the components used. The `MCP2515` folder contains the code that enables proper management of the MCP2515 CAN bus transceiver, and the `Can` folder contains the logic for utilizing both transceivers used in the project (SN65HVD230 and MCP2515).
+```
+└── Core/
+  ├── Inc/
+  │ ├── MCP2515/
+  │ ├── ..
+  │ └── main.h
+  ├── Src/
+  │ ├── MCP2515/
+  │ ├── Can/
+  │ ├── Tasks/
+  │ ├── Scheduler/
+  │ ├── ..
+  │ ├── stm32f4xx_it.c
+  │ └── main.c
+  └── Startup/
+```
+An important note about the scheduler: it allows for event timing through a counter incremented by the SysTick internal timer every millisecond. The logic and formula linking the HCK clock frequency to the SysTick interrupt are found in the `Scheduler.c` file, while the `SchTimerInterruptCallback()` function, which must be called by SysTick, has been placed in the `stm32f4xx_it.c` file as follows:
 
-## Utilizzo
+```c
+void SysTick_Handler(void)
+{
+  /* USER CODE BEGIN SysTick_IRQn 0 */
 
-### Prerequisiti
+  /* USER CODE END SysTick_IRQn 0 */
+  HAL_IncTick();
+  /* USER CODE BEGIN SysTick_IRQn 1 */
+  SchTimerInterruptCallback();
+  /* USER CODE END SysTick_IRQn 1 */
+}
+```
 
-- [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html)
-- [STM32CubeMX](https://www.st.com/en/development-tools/stm32cubemx.html)
-- Scheda Nucleo-F446RE
-- Almeno due transceiver CAN, come [MCP2515](https://blog.naver.com/eziya76/221188525127) o [SN65HVD230](https://youtu.be/KHNRftBa1Vc?si=2C673-Au-6wTgh2l)
-- Almeno due potenziometri
+## 🛠️ Commands & Installation
 
-### Configurazione Hardware
+To get started with this project, follow these steps:
 
-Di seguito il pinout della Nucleo-F446RE utilizzato per questo progetto:
+1. **Clone the repository**:
+   ```bash git clone https://github.com/davideronchini/CanBus_Nucleo_F446RE.git ```
+2. **Open the project with STM32CubeIDE**
+3. **Compile and upload the code to the Nucleo F446RE**
+4. **Set up your CAN Bus network and connect the board**
+5. **Monitor serial communication for debugging and verification**
+   
+## Credits
 
-[F446RE Pinout](https://os.mbed.com/platforms/ST-Nucleo-F446RE/)
+Some of the functionalities used were learned through the following resources: (Insert the appropriate emoji next to each resource in the list: a video emoji for video content and a document emoji for PDFs or websites)
 
-### Istruzioni di Compilazione
+- 📑**MCP2515**:  
+   📄[MCP2515 Usage Guide](https://blog.naver.com/eziya76/221188525127)  
+   🎞️[Video Tutorial](https://www.youtube.com/watch?v=sd6FKkfzU2I)
 
-1. Clona la repository:
-   ```bash
-   git clone https://github.com/davideronchini/CanBus_Nucleo_F446RE.git
-2. Apri il progetto con STM32CubeIDE.
-3. Compila e carica il codice sulla Nucleo-F446RE.
-4. Configura la tua rete CAN Bus e collega la scheda.
-5. Monitora la comunicazione seriale per il debug e la verifica del funzionamento.
+- 📑**SN65HVD230**:  
+   🎞️[Video Tutorial 1](https://youtu.be/KHNRftBa1Vc?si=2C673-Au-6wTgh2l)  
+   🎞️[Video Tutorial 2](https://www.youtube.com/watch?v=-lcrrRrKdFg)
 
-## Risorse e Tutorial Utili
+- 📑**Potentiometro & MCP2551**:  
+   🎞️[Usage Guide](https://www.micropeta.com/video115)
 
-- **MCP2515**:  
-   [Guida all'uso dell'MCP2515](https://blog.naver.com/eziya76/221188525127)  
-   [Video Tutorial](https://www.youtube.com/watch?v=sd6FKkfzU2I)
-
-- **SN65HVD230**:  
-   [Video Tutorial 1](https://youtu.be/KHNRftBa1Vc?si=2C673-Au-6wTgh2l)  
-   [Video Tutorial 2](https://www.youtube.com/watch?v=-lcrrRrKdFg)
-
-- **Potentiometro & MCP2551**:  
-   [Guida all'uso](https://www.micropeta.com/video115)
-
-- **ADC**:  
-   [Video Tutorial](https://www.youtube.com/watch?v=zipjCtiHYr8)  
-   [Approfondimento](https://deepbluembedded.com/stm32-adc-multi-channel-scan-continuous-mode-dma-poll-examples/#stm32-adc-multichannel-scan-continuous-mode-dma-example)
+- 📑**ADC**:  
+   🎞️[Video Tutorial](https://www.youtube.com/watch?v=zipjCtiHYr8)  
+   📄[In-depth Guide](https://deepbluembedded.com/stm32-adc-multi-channel-scan-continuous-mode-dma-poll-examples/#stm32-adc-multichannel-scan-continuous-mode-dma-example)
 
 
+## 👀 Interested in Learning More?
+
+If you have any questions, would like to discuss this project further, or are interested in potential collaboration opportunities, please feel free to connect with me through the following channels:
+
+- LinkedIn: [davideronchini](www.linkedin.com/in/davideronchini)
+- Email: [ronchinidavid3@gmail.com](mailto:ronchinidavid3@gmail.com)
