@@ -78,7 +78,7 @@ To get started with this project, follow these steps:
 5. **Monitor serial communication for debugging and verification**
 
 Attached below is the photo with the hardware connections
-
+![image alt](https://github.com/davideronchini/CanBus_Nucleo_F446RE/blob/13282035bf613f7a12042e17bf636f6d65a4f991/hardware_connections.jpg)
    
 ## Credits
 
