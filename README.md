@@ -27,31 +27,44 @@ The project structure used allows for the separation of feature implementation c
   │ └── main.c
   └── Startup/
 ```
-An important note about the scheduler: it allows for event timing through a counter incremented by the SysTick internal timer every millisecond. The logic and formula linking the HCK clock frequency to the SysTick interrupt are found in the `Scheduler.c` file, while the `SchTimerInterruptCallback()` function, which must be called by SysTick, has been placed in the `stm32f4xx_it.c` file.
+### Scheduler Implementation
+
+The scheduler in this project is crucial for precise event timing, achieved through the use of the SysTick internal timer. The SysTick timer generates an interrupt every millisecond, which drives the timing mechanism for various tasks in the system.
+
+#### Configuration Details
+
+The SysTick timer is initialized to create a 1 ms interrupt using the following configuration. The logic for this setup is defined in the `Scheduler.c` file:
 
 ```c
 void SchedulerInitFct(void)
 {
-	// Initialize SysTick to generate an interrupt every 1 ms.
-	HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / 160); // Formula for the divider: 128 MHz (of HCLK) / 4 (of APB1 Prescaler) / 2 (of APB2 Prescaler) * 10
+    // Configure SysTick to generate an interrupt every 1 ms.
+    // The calculation for the divider is as follows:
+    // 128 MHz (HCLK frequency) / 4 (APB1 Prescaler) / 2 (APB2 Prescaler) * 10
+    HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq() / 160);
 
-	// Initialize other variables and flags if necessary
-	...
+    // Initialize any other necessary variables and flags
+    ...
 }
 ```
+This configuration ensures that the SysTick interrupt occurs at regular 1 ms intervals, essential for maintaining consistent timing across different system tasks.
 
+### Interrupt Handling
+The actual handling of the SysTick interrupt is defined in the `stm32f4xx_it.c` file. Within the `SysTick_Handler`, the `SchTimerInterruptCallback()` function is called to process timing-related tasks:
 ```c
 void SysTick_Handler(void)
 {
-  /* USER CODE BEGIN SysTick_IRQn 0 */
+    /* USER CODE BEGIN SysTick_IRQn 0 */
 
-  /* USER CODE END SysTick_IRQn 0 */
-  HAL_IncTick();
-  /* USER CODE BEGIN SysTick_IRQn 1 */
-  SchTimerInterruptCallback();
-  /* USER CODE END SysTick_IRQn 1 */
+    /* USER CODE END SysTick_IRQn 0 */
+    HAL_IncTick();  // Increment the system tick
+
+    /* USER CODE BEGIN SysTick_IRQn 1 */
+    SchTimerInterruptCallback();  // Custom callback for the scheduler
+    /* USER CODE END SysTick_IRQn 1 */
 }
 ```
+This implementation ensures that every time the SysTick interrupt is triggered, the system tick counter is incremented, and the scheduler's callback function is executed. This method is fundamental to the operation of time-dependent tasks within the system, ensuring they execute at the correct intervals.
 
 ## 🛠️ Commands & Installation
 
