@@ -1,5 +1,5 @@
 # CanBus Communication
-**`Nucleo F446RE ⚙️`**
+**`Nucleo F446RE ⚡`**
 
 This repository contains the code for managing the CAN Bus protocol, reading sensors via ADC with DMA, and serial communication for an STM32 Nucleo-F446RE board. It is primarily used as a testing environment to accelerate the development of features that will later be implemented on a Nucleo-F756ZG board.
 
