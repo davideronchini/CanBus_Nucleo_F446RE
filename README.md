@@ -71,6 +71,7 @@ This implementation ensures that every time the SysTick interrupt is triggered, 
 To get started with this project, follow these steps:
 
 1. **Clone the repository**:
+2. 
    ```bash
    git clone https://github.com/davideronchini/CanBus_Nucleo_F446RE.git
    ```
