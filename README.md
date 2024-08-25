@@ -80,6 +80,9 @@ To get started with this project, follow these steps:
 ## Credits
 
 Some of the functionalities used were learned through the following resources:
+- **NUCLEO F446RE**:  
+   📄[Pinout](https://os.mbed.com/platforms/ST-Nucleo-F446RE/)
+  
 - **MCP2515**:  
    📄[MCP2515 Usage Guide](https://blog.naver.com/eziya76/221188525127)  
    🎞️[Video Tutorial](https://www.youtube.com/watch?v=sd6FKkfzU2I)
