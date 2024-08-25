@@ -79,8 +79,7 @@ To get started with this project, follow these steps:
    
 ## Credits
 
-Some of the functionalities used were learned through the following resources: (Insert the appropriate emoji next to each resource in the list: a video emoji for video content and a document emoji for PDFs or websites)
-
+Some of the functionalities used were learned through the following resources:
 - **MCP2515**:  
    📄[MCP2515 Usage Guide](https://blog.naver.com/eziya76/221188525127)  
    🎞️[Video Tutorial](https://www.youtube.com/watch?v=sd6FKkfzU2I)
