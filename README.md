@@ -76,6 +76,9 @@ To get started with this project, follow these steps:
 3. **Compile and upload the code to the Nucleo F446RE**
 4. **Set up your CAN Bus network and connect the board**
 5. **Monitor serial communication for debugging and verification**
+
+Attached below is the photo with the hardware connections
+
    
 ## Credits
 
