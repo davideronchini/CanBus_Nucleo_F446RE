@@ -71,15 +71,16 @@ This implementation ensures that every time the SysTick interrupt is triggered, 
 To get started with this project, follow these steps:
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/davideronchini/CanBus_Nucleo_F446RE.git
    ```
-2. **Open the project with STM32CubeIDE**
-3. **Compile and upload the code to the Nucleo F446RE**
-4. **Set up your CAN Bus network and connect the board**
-5. **Monitor serial communication for debugging and verification (e.g. using Termite)**
+3. **Open the project with STM32CubeIDE**
+4. **Compile and upload the code to the Nucleo F446RE**
+5. **Set up your CAN Bus network and connect the board**
+6. **Monitor serial communication for debugging and verification (e.g. using Termite)**
 
-### Attached below is the photo with the hardware connections:
+### Hardware connections:
 
 <img src="hardware_connections.jpg" alt="hardware connections" width="550"/>
    
