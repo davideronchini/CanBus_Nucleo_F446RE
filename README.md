@@ -89,7 +89,7 @@ Some of the functionalities used were learned through the following resources: (
    🎞️[Video Tutorial 1](https://youtu.be/KHNRftBa1Vc?si=2C673-Au-6wTgh2l)  
    🎞️[Video Tutorial 2](https://www.youtube.com/watch?v=-lcrrRrKdFg)
 
-- **Potentiometro & MCP2551**:  
+- **Potentiometer & MCP2551:**:  
    🎞️[Usage Guide](https://www.micropeta.com/video115)
 
 - **ADC**:  
