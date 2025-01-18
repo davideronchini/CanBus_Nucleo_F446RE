@@ -1,7 +1,7 @@
 ../Core/Src/Tasks/Tasks.c:41:6:TaskInit	8	static
 ../Core/Src/Tasks/Tasks.c:55:6:TaskFast	8	static
-../Core/Src/Tasks/Tasks.c:66:6:TaskMed	8	static
-../Core/Src/Tasks/Tasks.c:75:6:TaskConv	8	static
+../Core/Src/Tasks/Tasks.c:66:6:TaskMed	4	static
+../Core/Src/Tasks/Tasks.c:75:6:TaskConv	16	static
 ../Core/Src/Tasks/Tasks.c:95:6:TaskSlow	4	static
 ../Core/Src/Tasks/Tasks.c:133:6:Task1_AcquireSensorValues	64	static
 ../Core/Src/Tasks/Tasks.c:149:6:Task1_AverageSensorValues	16	static
