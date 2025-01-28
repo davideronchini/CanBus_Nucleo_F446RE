@@ -1,0 +1,7 @@
+../Core/Src/Tasks/Tasks.c:21:6:TaskInit	1
+../Core/Src/Tasks/Tasks.c:31:6:TaskFast	1
+../Core/Src/Tasks/Tasks.c:38:6:TaskMed	1
+../Core/Src/Tasks/Tasks.c:44:6:TaskSlow	1
+../Core/Src/Tasks/Tasks.c:54:10:AdaptiveEMA	2
+../Core/Src/Tasks/Tasks.c:79:6:AcquireSensorValues	5
+../Core/Src/Tasks/Tasks.c:100:6:Display_Message	2
