@@ -1,5 +1,5 @@
 Core/Src/Scheduler/Scheduler.o: ../Core/Src/Scheduler/Scheduler.c \
- /Users/davide/Documents/STM32CubeIDE/workspace_1.17.0/ADC_SignalFilter/Core/Inc/Scheduler/Scheduler.h \
+ /Users/davide/Documents/GitHub/CanBus_Nucleo_F446RE/ADC_SignalFilter/Core/Inc/Scheduler/Scheduler.h \
  ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -29,8 +29,8 @@ Core/Src/Scheduler/Scheduler.o: ../Core/Src/Scheduler/Scheduler.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- /Users/davide/Documents/STM32CubeIDE/workspace_1.17.0/ADC_SignalFilter/Core/Inc/Tasks/Tasks.h
-/Users/davide/Documents/STM32CubeIDE/workspace_1.17.0/ADC_SignalFilter/Core/Inc/Scheduler/Scheduler.h:
+ /Users/davide/Documents/GitHub/CanBus_Nucleo_F446RE/ADC_SignalFilter/Core/Inc/Tasks/Tasks.h
+/Users/davide/Documents/GitHub/CanBus_Nucleo_F446RE/ADC_SignalFilter/Core/Inc/Scheduler/Scheduler.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -61,4 +61,4 @@ Core/Src/Scheduler/Scheduler.o: ../Core/Src/Scheduler/Scheduler.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-/Users/davide/Documents/STM32CubeIDE/workspace_1.17.0/ADC_SignalFilter/Core/Inc/Tasks/Tasks.h:
+/Users/davide/Documents/GitHub/CanBus_Nucleo_F446RE/ADC_SignalFilter/Core/Inc/Tasks/Tasks.h:
