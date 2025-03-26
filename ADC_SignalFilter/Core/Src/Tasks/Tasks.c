@@ -13,6 +13,9 @@ uint32_t adc1_buf[ADC1_BUF_LEN]; // Buffer to store the raw ADC readings for eac
 volatile uint16_t APPs_val = 0;
 volatile uint16_t APPs_flt = 0;
 
+volatile uint8_t APPs_counter = 0;
+volatile uint32_t APPs_sum = 0, APPs_avg = 0;
+
 volatile int8_t STEERING_val = 0;
 
 volatile int16_t rpm_left = 0;
@@ -43,7 +46,9 @@ void TaskFast(void)
 void TaskMed(void)
 {
 	/* Executed at medium scheduling intervals (e.g. every 10 ms). */
-
+	APPs_avg = (uint16_t) ((float)APPs_sum / (float) APPs_counter);
+	APPs_counter = 0;
+	APPs_sum = 0;
 }
 
 void TaskSlow(void)
@@ -73,6 +78,36 @@ uint16_t AdaptiveEMA(uint16_t new_value) {
     return (uint16_t)filtered_value;
 }
 
+/**
+ * @brief Applies an Exponential Moving Average (EMA) filter.
+ *
+ * This function computes a filtered value from a new sensor reading using the
+ * formula:
+ *    EMA = ALPHA * new_value + (1 - ALPHA) * previous_ema
+ *
+ * A static variable 'ema' (of type float) is used to hold the internal state.
+ * It is initialized with a sentinel value (-1) to indicate that the filter is
+ * not yet initialized. Since sensor readings (uint16_t) are always non-negative,
+ * the first call initializes the filter with the actual sensor value.
+ *
+ * @param new_value The new sensor reading (uint16_t).
+ * @return The updated filtered value (uint16_t), rounded to the nearest integer.
+ */
+uint16_t EMA_Filter(uint16_t new_value) {
+    static float ema = -1.0f;  // Sentinel: negative value indicates uninitialized state.
+
+    if (ema < 0) {
+        // Initialize the EMA with the first sensor reading.
+        ema = (float)new_value;
+    } else {
+        // Update the EMA using the formula.
+        ema = ALPHA * (float)new_value + (1.0f - ALPHA) * ema;
+    }
+
+    // Return the filtered value rounded to the nearest integer.
+    return (uint16_t)(ema + 0.5f);
+}
+
 /* ***********************************************************************
  * SENSOR DATA ACQUISITION
  * Acquires sensor values ​​at maximum speed and stores the readings to
@@ -88,7 +123,7 @@ void AcquireSensorValues()
 
 	if (adc1_buf[0] >= APPs_ZERO_POSITION && adc1_buf[0]<=  APPs_FULL_POSITION) {
 		APPs_val = (uint16_t) ((((adc1_buf[0] - APPs_ZERO_POSITION) * (APPs_RANGE_SUP - APPs_RANGE_INF)) / (APPs_FULL_POSITION - APPs_ZERO_POSITION)) + APPs_RANGE_INF);
-		APPs_flt = (uint16_t)AdaptiveEMA(APPs_val);
+		APPs_flt = (uint16_t)EMA_Filter(APPs_val);
 	} else if (adc1_buf[0] < APPs_ZERO_POSITION) {
 		APPs_val = (uint16_t) APPs_RANGE_INF;
 		APPs_flt = (uint16_t) APPs_RANGE_INF;
@@ -97,9 +132,12 @@ void AcquireSensorValues()
 		APPs_flt = (uint16_t) APPs_RANGE_SUP;
 	}
 
+	APPs_sum += APPs_val;
+	APPs_counter++;
+
 	STEERING_val = (int8_t)((((adc1_buf[1] - STEERING_ZERO_POSITION) * (STEERING_RANGE_SUP - STEERING_RANGE_INF)) / (STEERING_FULL_POSITION - STEERING_ZERO_POSITION)) + STEERING_RANGE_INF);
 
-	Calculate_Motor_RPMs(STEERING_val, APPs_flt, &rpm_left, &rpm_right);
+	//Calculate_Motor_RPMs(STEERING_val, APPs_flt, &rpm_left, &rpm_right);
 
 	Display_Message(&huart2, "APPs: %lu\nAPPs with Filter: %lu\nSTEERING: %d\n\n", APPs_val, APPs_flt, STEERING_val);
 }

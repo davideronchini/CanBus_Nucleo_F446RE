@@ -42,18 +42,24 @@
  *
  *********************************************************************** */
 
-#define APPs_ZERO_POSITION 150      	// Reference for 0%   -> value measured by the potentiometer
-#define APPs_FULL_POSITION 3500     	// Reference for 100% -> value measured by the potentiometer
+#define APPs_ZERO_POSITION 0      	    // Reference for 0%   -> value measured by the potentiometer
+#define APPs_FULL_POSITION 255          // Reference for 100% -> value measured by the potentiometer
 #define APPs_RANGE_INF 0	     		// Reference for 0%   -> value resulting from conversion (mapping)
-#define APPs_RANGE_SUP 2000        	// Reference for 100% -> value resulting from conversion (mapping)
+#define APPs_RANGE_SUP 2000        	    // Reference for 100% -> value resulting from conversion (mapping)
 
 
 #define STEERING_ZERO_POSITION 0        // Reference for 0%   -> value measured by the potentiometer
-#define STEERING_FULL_POSITION 4096     // Reference for 100% -> value measured by the potentiometer
+#define STEERING_FULL_POSITION 255      // Reference for 100% -> value measured by the potentiometer
 #define STEERING_RANGE_INF -90          // Reference for 0%   -> value resulting from conversion (mapping)
 #define STEERING_RANGE_SUP 90           // Reference for 100% -> value resulting from conversion (mapping)
 
 #define MAX_RPM 2000					// Speed setpoint in 1/rpm
+
+/// @def ALPHA
+/// @brief Smoothing factor for the EMA filter (between 0 and 1).
+/// A lower value (e.g. 0.05) provides heavier smoothing (but slower response),
+/// while a higher value (e.g. 0.5) gives a more immediate response.
+#define ALPHA 0.1f
 
 // The minimum smoothing factor (alpha).
 // A smaller value ensures stability in static conditions.

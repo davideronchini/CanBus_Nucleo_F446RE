@@ -1,8 +1,9 @@
-../Core/Src/Tasks/Tasks.c:26:6:TaskInit	8	static
-../Core/Src/Tasks/Tasks.c:36:6:TaskFast	8	static
-../Core/Src/Tasks/Tasks.c:43:6:TaskMed	4	static
-../Core/Src/Tasks/Tasks.c:49:6:TaskSlow	4	static
-../Core/Src/Tasks/Tasks.c:59:10:AdaptiveEMA	24	static
-../Core/Src/Tasks/Tasks.c:84:6:AcquireSensorValues	16	static
-../Core/Src/Tasks/Tasks.c:133:6:Calculate_Motor_RPMs	48	static
-../Core/Src/Tasks/Tasks.c:185:6:Display_Message	36	static
+../Core/Src/Tasks/Tasks.c:29:6:TaskInit	8	static
+../Core/Src/Tasks/Tasks.c:39:6:TaskFast	8	static
+../Core/Src/Tasks/Tasks.c:46:6:TaskMed	4	static
+../Core/Src/Tasks/Tasks.c:54:6:TaskSlow	4	static
+../Core/Src/Tasks/Tasks.c:64:10:AdaptiveEMA	24	static
+../Core/Src/Tasks/Tasks.c:96:10:EMA_Filter	16	static
+../Core/Src/Tasks/Tasks.c:119:6:AcquireSensorValues	16	static
+../Core/Src/Tasks/Tasks.c:171:6:Calculate_Motor_RPMs	48	static
+../Core/Src/Tasks/Tasks.c:223:6:Display_Message	36	static
